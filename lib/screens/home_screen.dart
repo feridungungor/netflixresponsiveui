@@ -13,19 +13,17 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMixin {
 
   @override
-  void initState() {
-    super.initState();
-
-  }
-  @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       extendBodyBehindAppBar: true,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.grey[850],
-        child: const Icon(Icons.cast),
-        onPressed: () => print("Cast"),
+      floatingActionButton: Container(
+        margin: EdgeInsets.only(bottom: 50),
+        child: FloatingActionButton(
+          backgroundColor: Colors.grey[850],
+          child: const Icon(Icons.cast),
+          onPressed: () => print("Cast"),
+        ),
       ),
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 50),
@@ -35,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
       ),
       body: CustomScrollView(
         // controller: _scrollController,
+        controller: widget.scrollController,
         slivers: [
           SliverToBoxAdapter(
             child: ContentHeader(
